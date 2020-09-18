@@ -39,11 +39,15 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Sodimac.Database", "src\Inf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{51EA23FB-EF86-46C3-B458-7E6A71F40FD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "src\Infrastructure\Persistence\DataAccess\DataAccess.csproj", "{4B10D4E5-211B-41A4-9523-35743452ADB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "src\Infrastructure\Persistence\DataAccess\DataAccess.csproj", "{4B10D4E5-211B-41A4-9523-35743452ADB7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Crosscutting", "Crosscutting", "{FE063BDE-8780-4667-8E86-63F6AB9808D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "src\Infrastructure\Crosscutting\Helper\Helper.csproj", "{0B027BA5-3471-4CCF-B888-594DBAC30EFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper", "src\Infrastructure\Crosscutting\Helper\Helper.csproj", "{0B027BA5-3471-4CCF-B888-594DBAC30EFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{BB6460A8-FAE7-4643-840D-066F0801BDDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Services", "src\Domain\Domain.Services\Domain.Services.csproj", "{36BFB79B-9D6D-479A-850D-32A6315053C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +93,10 @@ Global
 		{0B027BA5-3471-4CCF-B888-594DBAC30EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B027BA5-3471-4CCF-B888-594DBAC30EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B027BA5-3471-4CCF-B888-594DBAC30EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36BFB79B-9D6D-479A-850D-32A6315053C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36BFB79B-9D6D-479A-850D-32A6315053C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36BFB79B-9D6D-479A-850D-32A6315053C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36BFB79B-9D6D-479A-850D-32A6315053C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,6 +121,8 @@ Global
 		{4B10D4E5-211B-41A4-9523-35743452ADB7} = {51EA23FB-EF86-46C3-B458-7E6A71F40FD1}
 		{FE063BDE-8780-4667-8E86-63F6AB9808D1} = {E2237790-39B6-41F8-8285-CC28086F7E99}
 		{0B027BA5-3471-4CCF-B888-594DBAC30EFF} = {FE063BDE-8780-4667-8E86-63F6AB9808D1}
+		{BB6460A8-FAE7-4643-840D-066F0801BDDB} = {2FE969D1-296B-4911-84C2-B94381228E03}
+		{36BFB79B-9D6D-479A-850D-32A6315053C9} = {BB6460A8-FAE7-4643-840D-066F0801BDDB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDADB4EC-A838-4A65-BB52-97AB69787A36}
