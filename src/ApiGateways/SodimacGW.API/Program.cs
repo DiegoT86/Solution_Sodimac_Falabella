@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace SodimacGW.API
 {
@@ -13,14 +8,31 @@ namespace SodimacGW.API
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            BuildWebHost(args).Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost
+                .CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(cb =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    var sources = cb.Sources;
+                    sources.Insert(3, new Microsoft.Extensions.Configuration.Json.JsonConfigurationSource()
+                    {
+                        Optional = true,
+                        Path = "appsettings.localhost.json",
+                        ReloadOnChange = false
+                    });
+                })
+                .UseStartup<Startup>()
+                .UseSerilog((builderContext, config) =>
+                {
+                    config
+                        .MinimumLevel.Information()
+                        .Enrich.FromLogContext()
+                        .WriteTo.Console();
+                })
+                .Build();
+
     }
 }
