@@ -1,9 +1,8 @@
-﻿
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;
 
-namespace Helper
+namespace Sodimac.Infrastructure.Crosscutting.Helper
 {
     public static class ConfigurationHelper
     {

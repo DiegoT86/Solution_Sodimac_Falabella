@@ -1,7 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Sodimac.Infrastructure.Crosscutting.Helper</AssemblyName>
+    <RootNamespace>Sodimac.Infrastructure.Crosscutting.Helper</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
