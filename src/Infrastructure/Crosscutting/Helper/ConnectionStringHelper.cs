@@ -1,8 +1,6 @@
-﻿using Helper;
-using Microsoft.Extensions.Configuration;
-using System;
+﻿using Microsoft.Extensions.Configuration;
 
-namespace DataAccess
+namespace Sodimac.Infrastructure.Crosscutting.Helper
 {
     public class ConnectionStringHelper
     {

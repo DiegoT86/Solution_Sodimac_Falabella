@@ -1,13 +1,13 @@
 ﻿using Dapper;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
+using Sodimac.Infrastructure.Crosscutting.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Text;
 
-namespace DataAccess.Core.DBManager
+namespace Sodimac.Infrastructure.Persistence.DataAccess.Core.DBManager
 {
     public abstract class DBManager : IDBManager
     {

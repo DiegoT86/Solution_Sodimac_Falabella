@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Sodimac.Domain.Services</AssemblyName>
+    <RootNamespace>Sodimac.Domain.Services</RootNamespace>
+  </PropertyGroup>
+
+</Project>
