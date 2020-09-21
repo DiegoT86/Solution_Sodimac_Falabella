@@ -10,16 +10,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1903 AS build
 WORKDIR /src
-COPY ["OrdenCompra/OrdenCompra.csproj", "OrdenCompra/"]
-RUN dotnet restore "OrdenCompra/OrdenCompra.csproj"
+COPY ["src/Services/OrdenCompra/OrdenCompra.API.csproj", "src/Services/OrdenCompra/"]
+RUN dotnet restore "src/Services/OrdenCompra/OrdenCompra.API.csproj"
 COPY . .
-WORKDIR "/src/OrdenCompra"
-RUN dotnet build "OrdenCompra.csproj" -c Release -o /app/build
+WORKDIR "/src/src/Services/OrdenCompra"
+RUN dotnet build "OrdenCompra.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "OrdenCompra.csproj" -c Release -o /app/publish
+RUN dotnet publish "OrdenCompra.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "OrdenCompra.dll"]
+ENTRYPOINT ["dotnet", "OrdenCompra.API.dll"]
