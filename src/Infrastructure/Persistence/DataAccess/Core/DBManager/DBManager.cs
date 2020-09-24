@@ -2,7 +2,6 @@
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Sodimac.Infrastructure.Crosscutting.Helper;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -39,7 +38,7 @@ namespace Sodimac.Infrastructure.Persistence.DataAccess.Core.DBManager
         {
             if (transactionsCounter <= 0)
             {
-                throw new Exception("There is no transaction");
+                throw new System.Exception("There is no transaction");
             }
 
             if (transaction != null)
@@ -56,7 +55,7 @@ namespace Sodimac.Infrastructure.Persistence.DataAccess.Core.DBManager
         {
             if (transaction == null || transactionsCounter <= 0)
             {
-                throw new Exception("There is no transaction");
+                throw new System.Exception("There is no transaction");
             }
 
             if (transaction != null && transactionsCounter == 1)
