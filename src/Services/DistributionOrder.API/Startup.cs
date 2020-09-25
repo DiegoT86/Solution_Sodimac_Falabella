@@ -1,12 +1,16 @@
+using Agents;
+using DistributionOrder.API.Config;
+using DistributionOrder.API.Domain.Contracts;
+using DistributionOrder.API.Domain.Services;
+using DistributionOrder.API.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using SodimacGW.API.Config;
+using Sodimac.Infrastructure.Persistence.DataAccess.Core.DBManager;
 
-namespace SodimacGW.API
+namespace DistributionOrder.API
 {
     public class Startup
     {
@@ -20,6 +24,11 @@ namespace SodimacGW.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<ISodimacDBManager, SodimacDBManager>();
+            services.AddTransient<IDistributionOrderRepository, DistributionOrderRepository>();
+            services.AddTransient<IDistributionOrderService, DistributionOrderService>();
+            services.AddHttpClient<IApiCaller, ApiCaller>();
+
             services.AddControllers();
 
             SwaggerConfig.AddRegistration(services);

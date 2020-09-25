@@ -41,3 +41,10 @@ services:
       context: .
       dockerfile: src\Services\ShipConfirm.API\Dockerfile
 
+
+  distributionorder.api:
+    image: ${DOCKER_REGISTRY-}distributionorderapi
+    build:
+      context: .
+      dockerfile: src\Services\DistributionOrder.API\Dockerfile
+

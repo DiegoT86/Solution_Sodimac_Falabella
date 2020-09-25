@@ -10,16 +10,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1903 AS build
 WORKDIR /src
-COPY ["src/Services/GRPCService/GrpcGreeter/GrpcGreeter.csproj", "src/Services/GRPCService/GrpcGreeter/"]
-RUN dotnet restore "src/Services/GRPCService/GrpcGreeter/GrpcGreeter.csproj"
+COPY ["src/Services/DistributionOrder.API/DistributionOrder.API.csproj", "src/Services/DistributionOrder.API/"]
+RUN dotnet restore "src/Services/DistributionOrder.API/DistributionOrder.API.csproj"
 COPY . .
-WORKDIR "/src/src/Services/GRPCService/GrpcGreeter"
-RUN dotnet build "GrpcGreeter.csproj" -c Release -o /app/build
+WORKDIR "/src/src/Services/DistributionOrder.API"
+RUN dotnet build "DistributionOrder.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "GrpcGreeter.csproj" -c Release -o /app/publish
+RUN dotnet publish "DistributionOrder.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "GrpcGreeter.dll"]
+ENTRYPOINT ["dotnet", "DistributionOrder.API.dll"]

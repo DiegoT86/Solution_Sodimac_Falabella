@@ -1,0 +1,7 @@
+﻿namespace SodimacGW.API.Config
+{
+    public class ApiConfig
+    {
+        public int Version { get; set; }
+    }
+}
