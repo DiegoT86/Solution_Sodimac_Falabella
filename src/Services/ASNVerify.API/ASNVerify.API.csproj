@@ -31,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Agents\Agents.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Persistence\DataAccess\DataAccess.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\ServiceAgents\Agents\Agents.csproj" />
   </ItemGroup>
 
 </Project>
