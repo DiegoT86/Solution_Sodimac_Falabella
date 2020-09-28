@@ -25,9 +25,9 @@ namespace DistributionOrder.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ISodimacDBManager, SodimacDBManager>();
-            services.AddTransient<IDistributionOrderRepository, DistributionOrderRepository>();
-            services.AddTransient<IDistributionOrderService, DistributionOrderService>();
             services.AddHttpClient<IApiCaller, ApiCaller>();
+            services.AddTransient<IDistributionOrderRepository, DistributionOrderRepository>();
+            services.AddTransient<IDistributionOrderService, DistributionOrderService>();            
 
             services.AddControllers();
 

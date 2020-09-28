@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DistributionOrder.API.Domain.Contracts;
-using Microsoft.AspNetCore.Http;
+﻿using DistributionOrder.API.Domain.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace DistributionOrder.API.Controllers
 {
@@ -13,10 +9,12 @@ namespace DistributionOrder.API.Controllers
     public class DistributionOrderController : ControllerBase
     {
         private readonly IDistributionOrderService _distributionOrderService;
+        private readonly ILogger<DistributionOrderController> _logger;
 
-        public DistributionOrderController(IDistributionOrderService distributionOrderService)
+        public DistributionOrderController(IDistributionOrderService distributionOrderService, ILogger<DistributionOrderController> logger)
         {
             _distributionOrderService = distributionOrderService;
+            _logger = logger;
         }
     }
 }

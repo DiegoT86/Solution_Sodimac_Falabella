@@ -14,20 +14,6 @@ services:
       dockerfile: src\Services\ASNVerify.API\Dockerfile
 
 
-  dispatchorder.api:
-    image: ${DOCKER_REGISTRY-}dispatchorderapi
-    build:
-      context: .
-      dockerfile: src\Services\DispatchOrder.API\Dockerfile
-
-
-  identity.api:
-    image: ${DOCKER_REGISTRY-}identityapi
-    build:
-      context: .
-      dockerfile: src\Services\Identity.API\Dockerfile
-
-
   ordencompra.api:
     image: ${DOCKER_REGISTRY-}ordencompraapi
     build:

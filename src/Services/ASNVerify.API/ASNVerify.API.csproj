@@ -10,20 +10,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Domain\Dtos\**" />
+    <Compile Remove="Infrastucture\Data\**" />
+    <Compile Remove="Infrastucture\Services\**" />
+    <Content Remove="Domain\Dtos\**" />
+    <Content Remove="Infrastucture\Data\**" />
+    <Content Remove="Infrastucture\Services\**" />
+    <EmbeddedResource Remove="Domain\Dtos\**" />
+    <EmbeddedResource Remove="Infrastucture\Data\**" />
+    <EmbeddedResource Remove="Infrastucture\Services\**" />
+    <None Remove="Domain\Dtos\**" />
+    <None Remove="Infrastucture\Data\**" />
+    <None Remove="Infrastucture\Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.7" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Entities\" />
-    <Folder Include="Infrastucture\Data\" />
-    <Folder Include="Infrastucture\Services\" />
-    <Folder Include="IntegrationEvents\" />
-    <Folder Include="Domain\Dtos\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Agents\Agents.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Persistence\DataAccess\DataAccess.csproj" />
   </ItemGroup>
 

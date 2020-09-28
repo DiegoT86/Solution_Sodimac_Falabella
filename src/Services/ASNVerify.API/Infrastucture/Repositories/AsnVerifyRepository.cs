@@ -4,7 +4,7 @@ using Sodimac.Infrastructure.Persistence.DataAccess.Core.Repositories;
 
 namespace ASNVerify.API.Infrastucture.Repositories
 {
-    public class AsnVerifyRepository: Repository,  IAsnVerifyRepository
+    public class ASNVerifyRepository: Repository,  IASNVerifyRepository
     {
 
         #region Constructor
@@ -12,7 +12,7 @@ namespace ASNVerify.API.Infrastucture.Repositories
         /// AsnVerifyRepository Constructor
         /// </summary>
         /// <param name="dbManager"></param>
-        public AsnVerifyRepository(ISodimacDBManager dbManager) : base(dbManager)
+        public ASNVerifyRepository(ISodimacDBManager dbManager) : base(dbManager)
         {
         }
 

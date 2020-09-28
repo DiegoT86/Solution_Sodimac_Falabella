@@ -1,9 +1,14 @@
+using Agents;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+using OrdenCompra.API.Config;
+using OrdenCompra.API.Domain.Contracts;
+using OrdenCompra.API.Domain.Services;
+using OrdenCompra.API.Infrastructure.Repositories;
+using Sodimac.Infrastructure.Persistence.DataAccess.Core.DBManager;
 
 namespace OrdenCompra
 {
@@ -19,40 +24,28 @@ namespace OrdenCompra
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddSingleton<ISodimacDBManager, SodimacDBManager>();
+            services.AddHttpClient<IApiCaller, ApiCaller>();
+            services.AddTransient<IOrdenCompraRepository, OrdenCompraRepository>();
+            services.AddTransient<IOrdenCompraService, OrdenCompraService>();
 
-            // Register the Swagger generator, defining 1 or more Swagger documents
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sodimac Orden Compra API V1", Version = "v1" });
-            });
+            services.AddControllers();
+
+            SwaggerConfig.AddRegistration(services);
+            services.Configure<ApiConfig>(Configuration.GetSection("ApiConfig"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
-            app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sodimac Orden Compra API V1");
-            });
+            SwaggerConfig.AddRegistration(app);
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -60,9 +53,7 @@ namespace OrdenCompra
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
         }
     }

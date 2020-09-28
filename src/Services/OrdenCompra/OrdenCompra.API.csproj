@@ -13,4 +13,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Agents\Agents.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Persistence\DataAccess\DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
