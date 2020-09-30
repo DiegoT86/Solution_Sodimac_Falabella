@@ -25,7 +25,7 @@ namespace ASNVerify.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ISodimacDBManager, SodimacDBManager>();
-            services.AddHttpClient<IApiCaller, ApiCaller>();
+            //services.AddHttpClient<IApiCaller, ApiCaller>();
             services.AddTransient<IASNVerifyRepository, ASNVerifyRepository>();
             services.AddTransient<IASNVerifyService, ASNVerifyService>();
 

@@ -14,12 +14,9 @@ namespace Agents
         //private readonly IApiConfig _appConfig; // Puede definirse en la config de la api que haga el request
         private readonly HttpClient _httpClient;
 
-        public ApiCaller(string urlExternalService)
+        public ApiCaller()
         {
-            _httpClient = new HttpClient()
-            {
-                BaseAddress = new Uri(urlExternalService)
-            };
+            _httpClient = new HttpClient();
 
             _httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
         }
@@ -31,8 +28,9 @@ namespace Agents
         /// <param name="controller"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<T> GetServiceResponseById<T>(string controller, int id)
+        public async Task<T> GetServiceResponseById<T>(string baseAddress, string controller, int id)
         {
+            _httpClient.BaseAddress = new Uri(baseAddress);
             var response = await _httpClient.GetAsync(string.Format("/{0}/{1}", controller, id));
 
             if (!response.IsSuccessStatusCode)

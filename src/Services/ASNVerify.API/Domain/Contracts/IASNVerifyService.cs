@@ -2,5 +2,6 @@
 {
     public interface IASNVerifyService
     {
+        ASNVerify.API.Domain.Entities.ASNVerify GetById(int id);
     }
 }

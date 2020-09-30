@@ -18,9 +18,12 @@
 
   <ItemGroup>
     <Folder Include="Domain\Contracts\" />
-    <Folder Include="Models\" />
     <Folder Include="Mapper\" />
-    <Folder Include="DTOs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\Crosscutting\Helper\Helper.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\ServiceAgents\Agents\Agents.csproj" />
   </ItemGroup>
 
 
