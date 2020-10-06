@@ -57,8 +57,13 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="Scripts" />
+    <Folder Include="StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\DistributionOrder.sql" />
+    <Build Include="Scripts\ASNVerify_Populate_Table.sql" />
+    <Build Include="Tables\ASNVerify_Create_Table.sql" />
+    <Build Include="StoredProcedures\ASNVerify_GetById_Create_SP.sql" />
   </ItemGroup>
 </Project>

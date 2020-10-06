@@ -2,6 +2,7 @@
 using Dapper;
 using Sodimac.Infrastructure.Persistence.DataAccess.Core.DBManager;
 using Sodimac.Infrastructure.Persistence.DataAccess.Core.Repositories;
+using System.Threading.Tasks;
 
 namespace ASNVerify.API.Infrastucture.Repositories
 {
@@ -29,6 +30,11 @@ namespace ASNVerify.API.Infrastucture.Repositories
             var cmd = _dbManager.GetStoredProcedureCommand("dbo.ASNVerify_GetById", parameters, 30);
 
             return _dbManager.GetOne<ASNVerify.API.Domain.Entities.ASNVerify>(cmd);
+        }
+
+        public async Task<ASNVerify.API.Domain.Entities.ASNVerify> GetByIdAsync(int id)
+        {
+            return await _dbManager.GetOneAsync<ASNVerify.API.Domain.Entities.ASNVerify>("SELECT * FROM dbo.ASNVerify a WHERE Id = " + id.ToString());
         }
     }
 }

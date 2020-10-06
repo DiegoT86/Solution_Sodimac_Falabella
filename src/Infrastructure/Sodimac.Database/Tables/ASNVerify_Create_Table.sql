@@ -1,10 +1,3 @@
-USE [SodimacDB]
-GO
-
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ASNVerify]') AND type in (N'U'))
-DROP TABLE [dbo].[ASNVerify]
-GO
-
 CREATE TABLE [dbo].[ASNVerify](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[CodASN] [nvarchar](100) NULL,

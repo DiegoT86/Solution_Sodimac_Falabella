@@ -19,7 +19,7 @@ namespace EventBusServiceBus
         private readonly IEventBusSubscriptionsManager _subsManager;
         private readonly SubscriptionClient _subscriptionClient;
         private readonly ILifetimeScope _autofac;
-        private readonly string AUTOFAC_SCOPE_NAME = "eshop_event_bus";
+        private readonly string AUTOFAC_SCOPE_NAME = "sodimac_falabella_event_bus";
         private const string INTEGRATION_EVENT_SUFFIX = "IntegrationEvent";
 
         public EventBusServiceBus(IServiceBusPersisterConnection serviceBusPersisterConnection,

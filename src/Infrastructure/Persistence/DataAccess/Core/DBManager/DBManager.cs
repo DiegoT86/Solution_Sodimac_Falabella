@@ -5,6 +5,7 @@ using Sodimac.Infrastructure.Crosscutting.Helper;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Threading.Tasks;
 
 namespace Sodimac.Infrastructure.Persistence.DataAccess.Core.DBManager
 {
@@ -99,6 +100,22 @@ namespace Sodimac.Infrastructure.Persistence.DataAccess.Core.DBManager
             using (IDbConnection conn = GetDatabase().CreateConnection())
             {
                 return conn.QueryFirstOrDefault<T>(command);
+            }
+        }
+
+        public async Task<T> GetOneAsync<T>(CommandDefinition command)
+        {
+            using (IDbConnection conn = GetDatabase().CreateConnection())
+            {
+                return await conn.QuerySingleOrDefaultAsync<T>(command);
+            }
+        }
+
+        public async Task<T> GetOneAsync<T>(string sql)
+        {
+            using (IDbConnection conn = GetDatabase().CreateConnection())
+            {
+                return await conn.QuerySingleOrDefaultAsync<T>(sql);
             }
         }
 

@@ -7,6 +7,7 @@ namespace ASNVerify.API.Config
 {
     public class ApiConfig
     {
-        public int Version { get; set; }
+        public string Version { get; set; }
+        public string EventBusConnection { get; set; }
     }
 }

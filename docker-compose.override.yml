@@ -8,6 +8,7 @@ services:
       - "80"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets:ro
+
   asnverify.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

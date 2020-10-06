@@ -2,6 +2,7 @@
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Collections.Generic;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace Sodimac.Infrastructure.Persistence.DataAccess.Core.DBManager
 {
@@ -16,6 +17,10 @@ namespace Sodimac.Infrastructure.Persistence.DataAccess.Core.DBManager
         CommandDefinition GetStoredProcedureCommand(string storedProcedureName, object parameters, int commandTimeout);
 
         T GetOne<T>(CommandDefinition command);
+
+        Task<T> GetOneAsync<T>(CommandDefinition command);
+
+        Task<T> GetOneAsync<T>(string sql);
 
         IEnumerable<T> Get<T>(CommandDefinition command);
 

@@ -11,13 +11,11 @@ namespace Agents
     /// </summary>
     public class ApiCaller : IApiCaller
     {
-        //private readonly IApiConfig _appConfig; // Puede definirse en la config de la api que haga el request
-        private readonly HttpClient _httpClient;
+        // Ref.: https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/
+        private static HttpClient _httpClient = new HttpClient();
 
         public ApiCaller()
         {
-            _httpClient = new HttpClient();
-
             _httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
         }
 
@@ -30,8 +28,8 @@ namespace Agents
         /// <returns></returns>
         public async Task<T> GetServiceResponseById<T>(string baseAddress, string controller, int id)
         {
-            _httpClient.BaseAddress = new Uri(baseAddress);
-            var response = await _httpClient.GetAsync(string.Format("/{0}/{1}", controller, id));
+            var reqUri = string.Format("{0}/{1}/{2}", baseAddress, controller, id);
+            var response = await _httpClient.GetAsync(reqUri);
 
             if (!response.IsSuccessStatusCode)
                 return default(T);

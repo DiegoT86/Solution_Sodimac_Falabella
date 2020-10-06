@@ -21,7 +21,16 @@ namespace SodimacGW.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IApiCaller, ApiCaller>();
+            services.AddSingleton<IApiCaller, ApiCaller>();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
 
             services.AddControllers();
 
@@ -38,6 +47,8 @@ namespace SodimacGW.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 
